@@ -62,6 +62,27 @@ def cuantas_figus(figus_total):
   
   return cantidad_figus
 
-print(cuantas_figus(669))
+#print(cuantas_figus(669))
 
-  
+
+#función para repetir 1000 veces el proceso de cuantas_figus
+def promedio_de_figus(n_repeticiones, album_total):
+  #El contador
+  cantidad = 0
+  #Ésta es la lista donde se guardaran las repeticiones de "cuantas_figus" antes de sumarlo
+  lista_suma = []
+  #El while se usa para repetir la función "cuántas_figus" mientras sea menor que "n_repeticiones"
+  while cantidad < n_repeticiones:
+    #Variable para guardar el resultado de la función cuantas_figus en una lista
+    figus = cuantas_figus(album_total)
+    lista_suma.append(figus)
+    cantidad += 1
+    #La lista_promedio es la suma de todos los resultados de "cuantas_figus" guardados en la lista "lista_suma"
+  lista_promedio = sum(lista_suma)
+    #OPCIÓN 3: la lista_promedio (toda la suma) entre el número de repeticiones (n_repeticiones)
+  promedio = lista_promedio / n_repeticiones
+  #Promedio es la variable para guardar el promedio de cuántas figuritas hay que comprar para completar el álbum, diviendo el total de figuritas compradas en todas las repeticiones entre las que se necesitan para llenar el álbum
+  return promedio
+
+
+print(promedio_de_figus(1000, 6))
