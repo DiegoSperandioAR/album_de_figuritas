@@ -87,8 +87,7 @@ def promedio_de_figus(n_repeticiones, album_total):
   #que se necesitan para llenar el álbum
   return promedio
 
-
-print(promedio_de_figus(1000, 6))
+#print(promedio_de_figus(1000, 6))
 
 #Generador de paquete de 5 figuritas
 def generar_paquete(figus_total, figus_paquete):
