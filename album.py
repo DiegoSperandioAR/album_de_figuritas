@@ -3,11 +3,11 @@ import random
 
 random.random()
 #random.random() devuelve un número random entre el o y 1
-print(random.random())
+#print(random.random())
 
 random.randint(1, 10)
 #print(random.randint(1, 10)) devuelve un número entre los 2 elegidos
-print(random.randint(1, 10))
+#print(random.randint(1, 10))
     
 
 #funcion de comprar figus
@@ -77,12 +77,46 @@ def promedio_de_figus(n_repeticiones, album_total):
     figus = cuantas_figus(album_total)
     lista_suma.append(figus)
     cantidad += 1
-    #La lista_promedio es la suma de todos los resultados de "cuantas_figus" guardados en la lista "lista_suma"
+    #La lista_promedio es la suma de todos los resultados de "cuantas_figus" guardados
+    # en la lista "lista_suma"
   lista_promedio = sum(lista_suma)
     #OPCIÓN 3: la lista_promedio (toda la suma) entre el número de repeticiones (n_repeticiones)
   promedio = lista_promedio / n_repeticiones
-  #Promedio es la variable para guardar el promedio de cuántas figuritas hay que comprar para completar el álbum, diviendo el total de figuritas compradas en todas las repeticiones entre las que se necesitan para llenar el álbum
+  #Promedio es la variable para guardar el promedio de cuántas figuritas hay que comprar para 
+  #completar el álbum, diviendo el total de figuritas compradas en todas las repeticiones entre las 
+  #que se necesitan para llenar el álbum
   return promedio
 
 
 print(promedio_de_figus(1000, 6))
+
+#Generador de paquete de 5 figuritas
+def generar_paquete(figus_total, figus_paquete):
+  i = 0
+  paquete = []
+  while i < figus_paquete:
+    figu = random.randint(0, figus_total - 1)
+    paquete.append(figu)
+    i += 1
+  return paquete
+#print(generar_paquete(669, 5))
+
+def cuantos_paquetes(figus_total, figus_paquete):
+  contador = 0
+  album = []
+  while contador < figus_total:
+    album.append(0)
+    contador += 1
+  cantidad_paquetes = 0
+  album_completo = False
+  while not album_completo:
+    figu_del_paquete = 0
+    paquete = generar_paquete(figus_total, figus_paquete)
+    while figu_del_paquete < len(paquete):
+      figu = paquete[figu_del_paquete]
+      album[figu] = 1
+      figu_del_paquete += 1
+    cantidad_paquetes += 1
+    album_completo = album_esta_completo(album)
+  return cantidad_paquetes
+print(cuantos_paquetes(669, 5))
